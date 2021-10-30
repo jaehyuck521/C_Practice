@@ -99,5 +99,29 @@
     <ClCompile Include="Assignment2-2.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="debug.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="File1.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="File2.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="File3.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="File4.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="File5.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="File6.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Assignment3.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
