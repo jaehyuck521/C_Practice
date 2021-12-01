@@ -27,5 +27,35 @@
     <ClCompile Include="DistinceSubsequence.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Rsa.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="cleanancampus.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Algo(1104).c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Algo(1109).c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Euclid.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthCenter.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="funnychess.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="nqueen_puzzle.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="two_colorg.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="bishop.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

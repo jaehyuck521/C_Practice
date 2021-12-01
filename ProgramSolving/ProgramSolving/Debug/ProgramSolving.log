@@ -1,4 +1,4 @@
-﻿  Assignment3.c
-C:\Users\playg\source\repos\ProgramSolving\ProgramSolving\Assignment3.c(17,18): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\playg\source\repos\ProgramSolving\ProgramSolving\Assignment3.c(25,16): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+﻿  queue.c
+C:\Users\playg\source\repos\ProgramSolving\ProgramSolving\queue.c(27,9): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\playg\source\repos\ProgramSolving\ProgramSolving\queue.c(37,17): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   ProgramSolving.vcxproj -> C:\Users\playg\source\repos\ProgramSolving\Debug\ProgramSolving.exe

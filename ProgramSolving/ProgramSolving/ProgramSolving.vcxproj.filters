@@ -123,5 +123,47 @@
     <ClCompile Include="Assignment3.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="lab2.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Labs.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="test.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="link1.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="link2.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="link3.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ProblemSolving(Term).c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="hw1.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="hw2.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="hw3.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Assignment4-1.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Assignment4-2.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="stack.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="queue.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
