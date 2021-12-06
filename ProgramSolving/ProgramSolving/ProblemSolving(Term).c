@@ -25,31 +25,31 @@ struct PEOPLE {
 }people[peoNum], * sorted_ppl[peoNum], check[peoNum];
 
 int Read_FileLine();
-// ok bjw
+
 void Read_File(struct PEOPLE* infoList);
-// ok bjw
+
 void StoreInLink(struct PEOPLE* infoList);
-// ok bjw
+
+void PrintLinkedList(struct PEOPLE* LinkedList);
+
+void PrintArray(struct PEOPLE* Array);
 
 struct PEOPLE* NodeMalloc(int size);
-// ok bjw
+
 int Update(struct PEOPLE* infoList, struct PEOPLE* updatedList); // Mark P7-1 P7-2
-// ok bjw
+
 int checksum(struct PEOPLE* updatedList); //8-1
 
-void DeleteLink(); // Mark P6-1
-void DeleteArray(); // Mark P6-2
+void DeleteLink(struct PEOPLE* nodeList); // Mark P6-2
+void DeleteArray(); // Mark P6-1
 void Sort_data_in_age(); // Mark P4-1
 void List_using_sorted(struct PEOPLE* nodeList); // Mark P5-1
 
-void search_name_in_array(); // 1-1
-void search_name_in_linkedlist(); //1-2
-void search_organization_job_in_array(); //2-1
-void search_organization_job_in_linkedlist(); //2-2
-void sort_data_in_tag(); //3-1
-
-
-
+void search_name_in_array(int*); // 1-1
+void search_name_in_linkedlist(struct PEOPLE* nodeList); //1-2
+void search_organization_job_in_array(int*); //2-1
+void search_organization_job_in_linkedlist(struct PEOPLE* nodeList); //2-2
+void sort_data_in_tag(int*); //3-1
 
 
 int main(void)
@@ -71,55 +71,39 @@ int main(void)
 
     struct PEOPLE* nodeList;
     nodeList = (struct PEOPLE*)malloc(line * sizeof(struct PEOPLE));
+    Read_File(nodeList);
+    StoreInLink(nodeList);
+    search_name_in_array(&line);
+    search_name_in_linkedlist(nodeList);
+    search_organization_job_in_array(&line);
+    search_organization_job_in_linkedlist(nodeList);
+    sort_data_in_tag(&line);
 
-    nodeList = infoList;
-
-    /*
-        struct PEOPLE* begin;
-        begin = &infoList[0];
-        while (begin)
-        {
-            printf("%d\n", begin->tag);
-            begin = begin->next;
-        }
-    */
-
+    Sort_data_in_age();
+    List_using_sorted(nodeList);
+    DeleteArray();
+    DeleteLink(nodeList);
     struct PEOPLE* updatedList;
     updatedList = NodeMalloc(line + 1);
 
 
     Update(infoList, updatedList);
-    /*
-        struct PEOPLE* begin;
-        begin = &updatedList[0];
-        while (begin)
-        {
-            printf("%d\n", begin->age);
-            begin = begin->next;
-        }
-    */
+
     for (int i = 0; i <= 30; i++)
     {
         printf("%s\n", (updatedList[i]).name);
     }
 
-    printf("The checksum value is : %d \nThe checksum value '1' means that the checksum matches.", checksum(updatedList));
+    printf("\nThe checksum value is : %d", checksum(updatedList));
+    printf("\nThe checksum value '1' means that checksum matches.");
+
     free(updatedList);
     free(infoList);
+    free(nodeList);
 
-    //StoreInLink();
-    //P1_1();
-    //P1_2();
-    //P2_1();
-    //P2_2();
-    //P3_1();
-    //Sort_data_in_age();
-    //List_using_sorted(nodeList);
 
-    //free(nodeList);
     return 0;
 }
-
 
 int Read_FileLine()
 {
@@ -190,22 +174,59 @@ void StoreInLink(struct PEOPLE* infoList)
         infoList[i].next = &infoList[i + 1];
         i++;
     }
+    infoList[i].next = NULL;
+}
+
+void PrintLinkedList(struct PEOPLE* LinkedList)
+{
+    printf("\n===== Show linked list =====\n");
+    struct PEOPLE* begin;
+    begin = &LinkedList[0];
+    while (begin->tag > 0)
+    {
+        printf("%d/", begin->tag);
+        printf("%s/", begin->date_regi);
+        printf("%s/", begin->fee_paid);
+        printf("%s/", begin->name);
+        printf("%d/", begin->age);
+        printf("%s/", begin->organization);
+        printf("%s \n", begin->job);
+
+        begin = begin->next;
+    }
 
 }
 
+void PrintArray(struct PEOPLE* Array)
+{
+    printf("\n===== Show array =====\n");
+    int i = 0;
+    while (Array[i].tag > 0)
+    {
+        printf("%d/", Array[i].tag);
+        printf("%s/", Array[i].date_regi);
+        printf("%s/", Array[i].fee_paid);
+        printf("%s/", Array[i].name);
+        printf("%d/", Array[i].age);
+        printf("%s/", Array[i].organization);
+        printf("%s \n", Array[i].job);
 
+        i++;
+    }
 
+}
 
+/*
+Description:Search for "Kim"(if found, print all information about the person)
+*In the array
+*output: void
+*author:parkchuljong
+*/
 
-
-
-
-
-
-void search_name_in_array() {
+void search_name_in_array(int* length) {
     int i;
-    // printf("Function p1_1\n");
-    for (i = 0; i <= peoNum; i++)
+    printf("===== Search for Kim (P1_1) =====\n");
+    for (i = 0; i <= *length; i++)
     {
         if (strstr(people[i].name, "Kim") != NULL)
         {
@@ -219,12 +240,13 @@ void search_name_in_array() {
 /*
 Description:Search for "Kim"(if found, print all information about the person)
 *In the linked list
-output: void
+*output: void
+*author:parkchuljong
 */
-void search_name_in_linkedlist() {
-    struct PEOPLE* ptr = &people[0];
+void search_name_in_linkedlist(struct PEOPLE* nodeList) {
+    struct PEOPLE* ptr = &nodeList[0];
     ptr = ptr->next;
-    // printf("Function p1_2\n");
+    printf("===== Search for Kim (P1_2) =====\n");
     while (ptr)
     {
         if (strstr(ptr->name, "Kim") != NULL)
@@ -242,10 +264,10 @@ Description:Search for engeineer from Gachon University(if found, print all info
 *output: void
 *author:parkchuljong
 */
-void search_organization_job_in_array() {
+void search_organization_job_in_array(int* length) {
     int i;
-    //printf("Function p2_1\n");
-    for (i = 0; i <= peoNum; i++)
+    printf("===== Search for engeineer from Gachon University (P2_1) =====\n");
+    for (i = 0; i <= *length; i++)
     {
         if (strstr(people[i].organization, "Gachon University") != NULL && strstr(people[i].job, "engineer") != NULL)
         {
@@ -254,9 +276,6 @@ void search_organization_job_in_array() {
         }
 
     }
-
-
-
 }
 /*
 Description:Search for engeineer from Gachon University(if found, print all information about the person)
@@ -264,10 +283,10 @@ Description:Search for engeineer from Gachon University(if found, print all info
 *output: void
 *author:parkchuljong
 */
-void search_organization_job_in_linkedlist() {
-    struct PEOPLE* ptr = &people[0];
+void search_organization_job_in_linkedlist(struct PEOPLE* nodeList) {
+    struct PEOPLE* ptr = &nodeList[0];
     ptr = ptr->next;
-    //printf("Function p2_2\n");
+    printf("===== Search for engeineer from Gachon University (P2_2) =====\n");
     while (ptr)
     {
         if (strstr(ptr->organization, "Gachon University") != NULL && strstr(ptr->job, "engineer") != NULL)
@@ -285,15 +304,15 @@ Description:Sort the data in the array in tag# order
 *output: void
 *author:parkchuljong
 */
-void sort_data_in_tag() {
+void sort_data_in_tag(int* length) {
     struct PEOPLE* ppl[peoNum], temp;
     int i, j;
-    // printf("p3_1\n");
-    for (i = 0; i < peoNum; i++)
+    printf("===== Sort the data in the array in tag# order (P3_1) =====\n");
+    for (i = 0; i < *length; i++)
         ppl[i] = &people[i];
 
-    for (i = 0; i < peoNum - 1; i++) {
-        for (j = 0; j < peoNum - i - 1; j++)
+    for (i = 0; i < *length - 1; i++) {
+        for (j = 0; j < *length - i - 1; j++)
         {
             if (ppl[j]->tag > ppl[j + 1]->tag)
             {
@@ -305,7 +324,7 @@ void sort_data_in_tag() {
 
 
     }
-    for (i = 0; i < peoNum; i++)
+    for (i = 0; i < *length; i++)
     {
         printf("%d/%s/%s/%s/%d/%s/%s\n", ppl[i]->tag, ppl[i]->date_regi,
             ppl[i]->fee_paid, ppl[i]->name, ppl[i]->age, ppl[i]->organization, ppl[i]->job);
@@ -313,6 +332,7 @@ void sort_data_in_tag() {
     }
 
 }
+
 
 /*
 Description:Sort the data in the array in age group order
@@ -324,6 +344,7 @@ Description:Sort the data in the array in age group order
 void Sort_data_in_age() {
     struct PEOPLE temp, temp2;
     int i;
+    int least;
     int tempnum;
     for (i = 0; i < peoNum; i++) {
         //sorted_ppl[i] = &people[i];
@@ -338,23 +359,26 @@ void Sort_data_in_age() {
 
     for (i = 0; i < peoNum - 1; i++)
     {
-        //least = i;
+        least = i;
 
         for (int j = i + 1; j < peoNum; j++)
         {
-            if ((sorted_ppl[i]->age) > (sorted_ppl[j]->age))
+            if ((sorted_ppl[least]->age) > (sorted_ppl[j]->age))
             {
-
-                temp = people[i];
-                temp2 = people[j];
-                *sorted_ppl[j] = temp;
-                *sorted_ppl[i] = temp2;
+                least = j;
 
             }
         }
+        if (least != i)
+        {
+            temp = people[i];
+            temp2 = people[least];
+            *sorted_ppl[least] = temp;
+            *sorted_ppl[i] = temp2;
+        }
     }
 
-    printf("selection sort\n");
+    printf("===== Selection Sort (P4_1) =====\n");
 
     for (int i = 0; i < peoNum; i++)
     {
@@ -364,7 +388,7 @@ void Sort_data_in_age() {
     }
 
     FILE* myFile;
-    myFile = fopen("4.1.txt", "w");
+    myFile = fopen("4-1.txt", "w");
     if (myFile == NULL)
         printf("\nFile Could Not Be Opened");
     else
@@ -387,7 +411,7 @@ Create a new linked list using the sorted data
 */
 void List_using_sorted(struct PEOPLE* nodeList)
 {
-    printf("p5_1\n");
+    printf("===== Linked list using sorted array (P5_1) =====\n");
     int i, j = 1;
 
     for (i = 0; i < peoNum; i++)
@@ -422,6 +446,13 @@ void List_using_sorted(struct PEOPLE* nodeList)
 
 }
 
+/*
+*Description: delete the data in a struct array
+*In the array
+*Output: void
+*Author : kimtaewoo
+*/
+
 void DeleteArray() {// Mark P6-1
     int i, h, l;
 
@@ -442,36 +473,39 @@ void DeleteArray() {// Mark P6-1
                     people[h].job[l] = people[h + 1].job[l];
             }
         }
-    }
-    printf("DeleteArray\n");
+    } //deleting Kim's data
+    printf("===== Delete data from the array (P6_1) =====\n");
+
     for (i = 0; people[i].tag != NULL; i++) {
         printf("%d %d/%s/%s/%s/%d/%s/%s\n", i + 1, people[i].tag, people[i].date_regi, people[i].fee_paid, people[i].name, people[i].age, people[i].organization, people[i].job);
 
     }
 }
-void DeleteLink() {// Mark P6-2
-    printf("DeleteLink\n");
+
+
+/*Description: delete the data in a linked list
+*In the linked list
+*Output: void
+*Author : kimtaewoo
+*/
+
+void DeleteLink(struct PEOPLE* nodeList) {// Mark P6-2
+    printf("===== Delete data from the Linked list (P6_2) =====\n");
     int i;
 
-    struct PEOPLE* ptr = &people[0];
-    ptr = ptr->next;
 
-    while (ptr)
+    nodeList = nodeList->next;
+
+    while (nodeList)
     {
-        if (strstr(ptr->name, "Kim") == NULL)
+        if (strstr(nodeList->name, "Kim") == NULL)//deleting Kim's data
         {
-            printf("%s: %d/%s/%s/%s/%d/%s\n", ptr->name, ptr->tag, ptr->date_regi, ptr->fee_paid, ptr->name,
-                ptr->age, ptr->job);
+            printf("%s: %d/%s/%s/%s/%d/%s\n", nodeList->name, nodeList->tag, nodeList->date_regi, nodeList->fee_paid, nodeList->name,
+                nodeList->age, nodeList->job);
         }
-        ptr = ptr->next;
+        nodeList = nodeList->next;
     }
 }
-
-
-
-
-
-
 
 struct PEOPLE* NodeMalloc(int size) // Function that allocate memory.
 {
@@ -485,6 +519,7 @@ struct PEOPLE* NodeMalloc(int size) // Function that allocate memory.
     else
         return memory;
 }
+
 
 int Update(struct PEOPLE* infoList, struct PEOPLE* updatedList) // Function that updates for "Gildong Kang"
 {
@@ -583,9 +618,30 @@ int Update(struct PEOPLE* infoList, struct PEOPLE* updatedList) // Function that
             updatedList[n].next = &updatedList[n + 1];
         }
         fclose(NewGuest);
+
+        printf("\n===== Data list (P7) =====\n\n");
+        struct PEOPLE* begin;
+        begin = &updatedList[0];
+
+        while (begin)
+        {
+            printf("%d/", begin->tag);
+            printf("%s/", begin->date_regi);
+            printf("%s/", begin->fee_paid);
+            printf("%s/", begin->name);
+            printf("%d/", begin->age);
+            printf("%s/", begin->organization);
+            printf("%s \n", begin->job);
+
+            begin = begin->next;
+        }
+        printf("===== End Of List =====\n");
         return 1;
     }
 }
+
+
+
 /*Mark 8-1
 Description: compute the org_checksum and copy_checksum, then compare that.
 *output: return value (0 or 1)
@@ -660,5 +716,3 @@ int checksum(struct PEOPLE* updatedList) // recent data
         return 1;
     }
 }
-
-e

@@ -1,4 +1,5 @@
-﻿  queue.c
-C:\Users\playg\source\repos\ProgramSolving\ProgramSolving\queue.c(27,9): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\playg\source\repos\ProgramSolving\ProgramSolving\queue.c(37,17): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+﻿  ProblemSolving(Term).c
+C:\Users\playg\source\repos\ProgramSolving\ProgramSolving\ProblemSolving(Term).c(348,9): warning C4101: 'tempnum' :참조되지 않은 지역 변수입니다.
+C:\Users\playg\source\repos\ProgramSolving\ProgramSolving\ProblemSolving(Term).c(479,38): warning C4047: '!=': 'int'의 간접 참조 수준이 'void *'과(와) 다릅니다.
+C:\Users\playg\source\repos\ProgramSolving\ProgramSolving\ProblemSolving(Term).c(494,9): warning C4101: 'i' :참조되지 않은 지역 변수입니다.
   ProgramSolving.vcxproj -> C:\Users\playg\source\repos\ProgramSolving\Debug\ProgramSolving.exe
